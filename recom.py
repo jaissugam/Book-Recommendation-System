@@ -54,4 +54,26 @@ def readData():
     books['label']=books['label'].apply(lambda w:" ".join(w))
     return books
 
+def makeVector(books):
+    vect=CountVectorizer(max_features=4000,stop_words='english')
+    vector=vect.fit_transform(books['label']).toarray()
+    return vector
+
+def findCosine(v):
+    proximityVector=cosine_similarity(v)
+    return proximityVector
+
+def recommend(book):
+    books=readData()
+    vect=makeVector(books)
+    proximityVector=findCosine(vect)
+    index = books[books['title'] == book].index[0]
+    distances = sorted(list(enumerate(proximityVector[index])),reverse=True,key = lambda x: x[1])
+    for i in distances[1:9]:
+        print(books.iloc[i[0]].title)
+
+recommend('The Alchemist')
+
+
+
 
