@@ -1,2 +1,2 @@
 # Book-Recommendation-System
-Like something? We got more!
+Recommending books via content-based recommendation
