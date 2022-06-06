@@ -1,4 +1,5 @@
 from flask import Flask,render_template,request
+from recom import recommend
 
 app=Flask(__name__)
 
@@ -6,7 +7,8 @@ app=Flask(__name__)
 def home():
     return render_template('home.html')
 
-@app.route('/recom')
-def recommend():
-    book=request.args['book']
-    return book
+@app.route('/recom',methods=['GET','POST'])
+def recom():
+    book=request.form['book']
+    recoms=recommend(book)
+    return (" | ".join(recoms))
