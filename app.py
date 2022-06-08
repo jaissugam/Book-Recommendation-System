@@ -7,7 +7,6 @@ app.secret_key = 'a#xtQ1$%op'
 @app.route('/',methods=['GET','POST'])
 def home():
     if request.method=='POST':
-        flash('Hold on..Fetching your next reads!')
         book=request.form['book']
         recoms=recommend(book)
         flash('You might enjoy reading the following books...')

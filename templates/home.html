@@ -7,15 +7,20 @@
         <form action="/" method="post">
             <label>Please enter a book you like: </label>
             <input type="text" required value="The Alchemist" name="book">
-            <input type="submit" name="recommend">
+            <input type="submit" name="recommend" onclick="change();">
         </form>
+        <h2 id="notify"></h2>
+        <script>
+            function change(){
+                x=document.getElementById('notify');
+                x.innerHTML='Hold on..Fetching your next reads!'
+            }
+        </script>
             {% if recoms %}
-                <h2>{{get_flashed_messages()[1]}}</h2>
+                <h2>{{get_flashed_messages()[0]}}</h2>
                 {% for recom in recoms %}
                     <h3>{{recom}}</h3>
                 {% endfor %}
-            {% else %}
-                <h2>{{get_flashed_messages()[0]}}</h2>
             {% endif %}
     </body>
 </html>
