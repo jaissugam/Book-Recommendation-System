@@ -9,8 +9,15 @@
             <input type="text" required value="The Alchemist" name="book">
             <input type="submit" name="recommend">
         </form>
-        {% for recom in recoms %}
-            <h2>{{recom}}</h2>
-        {% endfor %}
+        {% if request.form['recommend'] %}
+            {% if recoms %}
+                <h2>You might enjoy reading the following books!</h2>
+                {% for recom in recoms %}
+                    <h3>{{recom}}</h3>
+                {% endfor %}
+            {% else %}
+                <h2>Fetching your next reads..Please wait!</h2>
+            {% endif %}
+        {% endif %}
     </body>
 </html>
