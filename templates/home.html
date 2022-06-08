@@ -6,7 +6,7 @@
         <h2>Welcome to Book Recommendation System</h2>
         <form action="/" method="post">
             <label>Please enter a book you like: </label>
-            <input type="text" required value="The Alchemist" name="book">
+            <input type="text" required placeholder="The Alchemist" name="book">
             <input type="submit" name="recommend" onclick="change();">
         </form>
         <h2 id="notify"></h2>
@@ -16,11 +16,15 @@
                 x.innerHTML='Hold on..Fetching your next reads!'
             }
         </script>
-            {% if recoms %}
-                <h2>{{get_flashed_messages()[0]}}</h2>
-                {% for recom in recoms %}
-                    <h3>{{recom}}</h3>
-                {% endfor %}
-            {% endif %}
+        {% if recoms %}
+            <script>
+                    x=document.getElementById('notify');
+                    x.innerHTML='';
+            </script>
+            <h2>{{get_flashed_messages()[0]}}</h2>
+            {% for recom in recoms %}
+                <h3>{{recom}}</h3>
+            {% endfor %}
+        {% endif %}
     </body>
 </html>
