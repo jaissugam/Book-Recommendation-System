@@ -4,10 +4,13 @@
     </head>
     <body>
         <h2>Welcome to Book Recommendation System</h2>
-        <form action="recom" method="post">
+        <form action="/" method="post">
             <label>Please enter a book you like: </label>
             <input type="text" required value="The Alchemist" name="book">
             <input type="submit" name="recommend">
         </form>
+        {% for recom in recoms %}
+            <h2>{{recom}}</h2>
+        {% endfor %}
     </body>
 </html>
