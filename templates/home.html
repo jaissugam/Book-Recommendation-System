@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='main.css') }}">
     </head>
     <body>
         <h2>Welcome to Book Recommendation System</h2>
@@ -13,18 +13,20 @@
             <input type="text" required placeholder="The Alchemist" name="book">
             <input type="submit" name="recommend" onclick="change();">
         </form>
+        
+        <div id="spinner" class="spinner-grow text-dark" role="status">
+            <span class="visually-hidden"></span>
+        </div>
         <h2 id="notify"></h2>
         <script>
             function change(){
-                x=document.getElementById('notify');
-                x.innerHTML='Hold on..Fetching your next reads!'
+                msg=document.getElementById('notify');
+                spin=document.getElementById('spinner');
+                spin.style.display="block";
+                msg.innerHTML='Hold on..Fetching your next reads!'
             }
         </script>
         {% if recoms %}
-            <script>
-                    x=document.getElementById('notify');
-                    x.innerHTML='';
-            </script>
             <h2>{{get_flashed_messages()[0]}}</h2>
             {% for recom in recoms %}
                 <h3>{{recom}}</h3>
