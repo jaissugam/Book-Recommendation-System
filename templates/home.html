@@ -7,17 +7,23 @@
         <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='main.css') }}">
     </head>
     <body>
-        <h2>Welcome to Book Recommendation System</h2>
-        <form action="/" method="post">
-            <label>Please enter a book you like: </label>
-            <input type="text" required placeholder="The Alchemist" name="book">
-            <input type="submit" name="recommend" onclick="change();">
-        </form>
-        
-        <div id="spinner" class="spinner-grow text-dark" role="status">
-            <span class="visually-hidden"></span>
+        <div class="card text-center">
+            <div class="card-header">
+                Find your next awesome read
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Please enter a book you like:</h5>
+              <form action="/" method="post">
+                <input type="text" required placeholder="The Alchemist" name="book">
+                <input class="btn btn-primary" type="submit" name="recommend" onclick="change();">
+              </form>
+            </div>
         </div>
-        <h2 id="notify"></h2>
+        <div class="d-flex justify-content-center">
+            <div id="spinner" class="spinner-border" role="status">
+            </div><br>
+            <strong id="notify"></strong>
+        </div>
         <script>
             function change(){
                 msg=document.getElementById('notify');
@@ -27,10 +33,17 @@
             }
         </script>
         {% if recoms %}
-            <h2>{{get_flashed_messages()[0]}}</h2>
-            {% for recom in recoms %}
-                <h3>{{recom}}</h3>
-            {% endfor %}
+        <div class="card text-center">
+            <div class="card-header">
+                {{get_flashed_messages()[0]}}
+            </div>
+            <div class="card-body">
+                {% for recom in recoms %}
+                    <h5 class="card-title">{{recom}}</h5>
+                {% endfor %}
+            </div>
+        </div>
+            
         {% endif %}
     </body>
 </html>
