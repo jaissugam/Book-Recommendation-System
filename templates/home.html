@@ -1,10 +1,11 @@
 <html>
     <head>
-        <title>Book Recommendation System</title>
+        <title>BookRecom</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='main.css') }}">
+
     </head>
     <body>
         <div class="card text-center">
@@ -14,14 +15,19 @@
             <div class="card-body">
               <h5 class="card-title">Please enter a book you like:</h5>
               <form action="/" method="post">
-                <input type="text" required placeholder="The Alchemist" name="book">
+                <input type="text" id="book" required name="book" list="books">
+                <datalist id="books">
+                {% for book in books%}
+                    <option>{{book}}</option>
+                {% endfor %}    
+                </datalist>
                 <input class="btn btn-primary" type="submit" name="recommend" onclick="change();">
               </form>
             </div>
         </div>
         <div class="d-flex justify-content-center">
             <div id="spinner" class="spinner-border" role="status">
-            </div><br>
+            </div><br></br>
             <strong id="notify"></strong>
         </div>
         <script>

@@ -52,6 +52,7 @@ def readData():
     books['label']=books['authors']+books['categories']+books['description']+books['popularity']
     books=books.drop(columns=['authors','categories','description','popularity'])
     books['label']=books['label'].apply(lambda w:" ".join(w))
+    books['title']=books['title'].apply(lambda s:s.replace("\"",""))
     return books
 
 def makeVector(books):
@@ -68,3 +69,7 @@ def finalData():
     vect=makeVector(books)
     proximityVector=findCosine(vect)
     return books,proximityVector
+
+def listBooks():
+    books=readData()
+    return books['title'].values.tolist()
