@@ -39,18 +39,23 @@
             }
         </script>
         {% if recoms %}
-            <div class="card-header">
-                {{get_flashed_messages()[0]}}
-            </div>
-            {% for recom in recoms %}
-            <div class="card" style="width: 18rem;">
-                <img src={{recom[1]}} class="card-img-top" alt="cover">
-                <div class="card-body">
-                  <h5 class="card-title">{{recom[0]}}</h5>
+            <div class="card text-center">
+                <div class="card-header">
+                    {{get_flashed_messages()[0]}}
                 </div>
             </div>
-            {% endfor %}
-            
+            <div class="container">
+                <div class="row">
+                    {% for recom in recoms %}
+                    <div class="card col">
+                        <img src={{recom[1]}} class="card-img-top" alt="cover">
+                        <div class="card-body">
+                            <h5 class="card-title">{{recom[0]}}</h5>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
         {% endif %}
     </body>
 </html>

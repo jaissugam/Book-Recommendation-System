@@ -77,5 +77,5 @@ def listBooks():
 def getThumbnail(title):
     old=pd.read_csv('books.csv')
     new=readData()
-    id=new['title'==title]['isbn13'].value
-    return old['isbn13'==id]['thumbnail'].value
+    id=new.loc[new['title'] == title, 'isbn13'].iloc[0]
+    return old.loc[old['isbn13']==id,'thumbnail'].iloc[0]
