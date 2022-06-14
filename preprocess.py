@@ -73,3 +73,9 @@ def finalData():
 def listBooks():
     books=readData()
     return books['title'].values.tolist()
+
+def getThumbnail(title):
+    old=pd.read_csv('books.csv')
+    new=readData()
+    id=new['title'==title]['isbn13'].value
+    return old['isbn13'==id]['thumbnail'].value
