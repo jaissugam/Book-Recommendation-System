@@ -40,6 +40,7 @@ def changeDescription(text):
    
 def readData():
     df=pd.read_csv('books.csv')
+    pickle.dump(df,open("old-books-list.pkl","wb"))
     books=df.drop(columns=['isbn10','subtitle','thumbnail','published_year','num_pages'])
     books['popularity']=(books['average_rating']*books['ratings_count'])/100000
     books.dropna(inplace=True)
@@ -53,29 +54,36 @@ def readData():
     books=books.drop(columns=['authors','categories','description','popularity'])
     books['label']=books['label'].apply(lambda w:" ".join(w))
     books['title']=books['title'].apply(lambda s:s.replace("\"",""))
-    return books
+    #return books
+    pickle.dump(books,open("new-books-list.pkl","wb"))
 
 def makeVector(books):
     vect=CountVectorizer(max_features=4000,stop_words='english')
     vector=vect.fit_transform(books['label']).toarray()
-    return vector
+    #return vector
+    pickle.dump(vector,open("count-vector.pkl","wb"))
 
 def findCosine(v):
     proximityVector=cosine_similarity(v)
     return proximityVector
 
 def finalData():
-    books=readData()
-    vect=makeVector(books)
+    #books=readData()
+    #vect=makeVector(books)
+    books=pickle.load(open("new-books-list.pkl","rb"))
+    vect=pickle.load(open("count-vector.pkl","rb"))
     proximityVector=findCosine(vect)
     return books,proximityVector
 
 def listBooks():
-    books=readData()
+    #books=readData()
+    books=pickle.load(open("new-books-list.pkl","rb"))
     return books['title'].values.tolist()
 
 def getThumbnail(title):
-    old=pd.read_csv('books.csv')
-    new=readData()
+    #old=pd.read_csv('books.csv')
+    old=pickle.load(open("old-books-list.pkl","rb"))
+    #new=readData()
+    new=pickle.load(open("new-books-list.pkl","rb"))
     id=new.loc[new['title'] == title, 'isbn13'].iloc[0]
     return old.loc[old['isbn13']==id,'thumbnail'].iloc[0]

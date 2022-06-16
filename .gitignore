@@ -1,4 +1,5 @@
 books.csv
-books-list.pkl
-cosine-matrix.pkl
+old-books-list.pkl
+new-books-list.pkl
+count-vector.pkl
 recommend.ipynb
