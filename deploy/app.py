@@ -23,4 +23,4 @@ def pageNotFound(error):
     return render_template('page-not-found.html'),404
 
 if __name__=="__main__":
-    app.run(debug=False,host="0.0.0.0")
+    app.run(debug=True)
