@@ -1,5 +1,6 @@
 from preprocess import *
 
+#Method to return the list of closely related books and their thumbnails for a particular book
 def recommend(book):
     books,proximityVector=finalData()
     recomms=[]
@@ -15,10 +16,6 @@ def recommend(book):
             recomms.append(temp)
     return recomms
 
-    
-#choice=input("Enter a book you like : ")
-#print('\n~ Fetching books you might like ~')
-#print(recommend(choice))
 
 
 
