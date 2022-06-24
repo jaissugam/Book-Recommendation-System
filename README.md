@@ -37,6 +37,20 @@ vector=vect.fit_transform(books['label']).toarray()
 proximityVector=cosine_similarity(vector)
 ```
 
+#### To get the Flask app up and running in your local machine,
+1. Head to [deploy branch](https://github.com/jaissugam/Book-Recommendation-System/tree/deployv1)
+2. Clone the repo to your local directory.
+3. Navigate to your directory.
+4. Meet all environment requirements.
+```
+pip install -r requirements.txt
+```
+5. Get the Flask running
+```
+flask run
+```
+
+*Deployed on* [Heroku](https://id.heroku.com/login)
 
 
 
