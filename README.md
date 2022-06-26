@@ -1,5 +1,5 @@
 ## Book-Recommendation-System
-#### Currently, the webpage and the underlying recommender model works to recommend content-wise most similar books upon user's input using Cosine Similarity. It's built upon popular [7k Books](https://www.kaggle.com/datasets/dylanjcastillo/7k-books-with-metadata) dataset.
+#### Currently, the webapp and the underlying recommender model works to recommend content-wise most similar books upon user's input using Cosine Similarity. It's built upon popular [7k Books](https://www.kaggle.com/datasets/dylanjcastillo/7k-books-with-metadata) dataset.
 
 ##### Straight up from the dataset, the dataframe looks like this :point_down:<br>
 <img width="800" alt="image" src="https://user-images.githubusercontent.com/67289887/174998044-f75bf47f-89b0-4cda-92ce-e941cee6caa3.png"><br>
