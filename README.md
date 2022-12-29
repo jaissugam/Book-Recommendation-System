@@ -51,6 +51,7 @@ flask run
 ```
 
 *Deployed on* [Heroku](https://id.heroku.com/login)
+*Re-Deployed on* [Python Anywhere](https://www.pythonanywhere.com/)
 
 
 
