@@ -50,7 +50,7 @@ pip install -r requirements.txt
 flask run
 ```
 
-*Deployed on* [Heroku](https://id.heroku.com/login)
+*Deployed on* [Heroku](https://id.heroku.com/login)<br>
 *Re-Deployed on* [Python Anywhere](https://www.pythonanywhere.com/)
 
 
